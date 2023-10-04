@@ -1,0 +1,838 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+let now = new Date();
+// Input a date here to test:
+// e.g. April 30, 2023
+// ⮑ Q2
+
+let today = now.toString().toLowerCase();
+let quarters = ["q1", "q2", "q3", "q4"];
+let currentQuarter;
+let days = [
+  "jan 01",
+  "jan 02",
+  "jan 03",
+  "jan 04",
+  "jan 05",
+  "jan 06",
+  "jan 07",
+  "jan 08",
+  "jan 09",
+  "jan 10",
+  "jan 11",
+  "jan 12",
+  "jan 13",
+  "jan 14",
+  "jan 15",
+  "jan 16",
+  "jan 17",
+  "jan 18",
+  "jan 19",
+  "jan 20",
+  "jan 21",
+  "jan 22",
+  "jan 23",
+  "jan 24",
+  "jan 25",
+  "jan 26",
+  "jan 27",
+  "jan 28",
+  "jan 29",
+  "jan 30",
+  "jan 31",
+
+  // feb
+  "feb 01",
+  "feb 02",
+  "feb 03",
+  "feb 04",
+  "feb 05",
+  "feb 06",
+  "feb 07",
+  "feb 08",
+  "feb 09",
+  "feb 10",
+  "feb 11",
+  "feb 12",
+  "feb 13",
+  "feb 14",
+  "feb 15",
+  "feb 16",
+  "feb 17",
+  "feb 18",
+  "feb 19",
+  "feb 20",
+  "feb 21",
+  "feb 22",
+  "feb 23",
+  "feb 24",
+  "feb 25",
+  "feb 26",
+  "feb 27",
+  "feb 28",
+  "feb 29",
+
+  // march
+  "mar 01",
+  "mar 02",
+  "mar 03",
+  "mar 04",
+  "mar 05",
+  "mar 06",
+  "mar 07",
+  "mar 08",
+  "mar 09",
+  "mar 10",
+  "mar 11",
+  "mar 12",
+  "mar 13",
+  "mar 14",
+  "mar 15",
+  "mar 16",
+  "mar 17",
+  "mar 18",
+  "mar 19",
+  "mar 20",
+  "mar 21",
+  "mar 22",
+  "mar 23",
+  "mar 24",
+  "mar 25",
+  "mar 26",
+  "mar 27",
+  "mar 28",
+  "mar 29",
+  "mar 30",
+  "mar 31",
+
+  // apr
+  "apr 01",
+  "apr 02",
+  "apr 03",
+  "apr 04",
+  "apr 05",
+  "apr 06",
+  "apr 07",
+  "apr 08",
+  "apr 09",
+  "apr 10",
+  "apr 11",
+  "apr 12",
+  "apr 13",
+  "apr 14",
+  "apr 15",
+  "apr 16",
+  "apr 17",
+  "apr 18",
+  "apr 19",
+  "apr 20",
+  "apr 21",
+  "apr 22",
+  "apr 23",
+  "apr 24",
+  "apr 25",
+  "apr 26",
+  "apr 27",
+  "apr 28",
+  "apr 29",
+  "apr 30",
+
+  // may
+  "may 01",
+  "may 02",
+  "may 03",
+  "may 04",
+  "may 05",
+  "may 06",
+  "may 07",
+  "may 08",
+  "may 09",
+  "may 10",
+  "may 11",
+  "may 12",
+  "may 13",
+  "may 14",
+  "may 15",
+  "may 16",
+  "may 17",
+  "may 18",
+  "may 19",
+  "may 20",
+  "may 21",
+  "may 22",
+  "may 23",
+  "may 24",
+  "may 25",
+  "may 26",
+  "may 27",
+  "may 28",
+  "may 29",
+  "may 30",
+  "may 31",
+
+  // jun
+  "jun 01",
+  "jun 02",
+  "jun 03",
+  "jun 04",
+  "jun 05",
+  "jun 06",
+  "jun 07",
+  "jun 08",
+  "jun 09",
+  "jun 10",
+  "jun 11",
+  "jun 12",
+  "jun 13",
+  "jun 14",
+  "jun 15",
+  "jun 16",
+  "jun 17",
+  "jun 18",
+  "jun 19",
+  "jun 20",
+  "jun 21",
+  "jun 22",
+  "jun 23",
+  "jun 24",
+  "jun 25",
+  "jun 26",
+  "jun 27",
+  "jun 28",
+  "jun 29",
+  "jun 30",
+
+  // jul
+  "jul 01",
+  "jul 02",
+  "jul 03",
+  "jul 04",
+  "jul 05",
+  "jul 06",
+  "jul 07",
+  "jul 08",
+  "jul 09",
+  "jul 10",
+  "jul 11",
+  "jul 12",
+  "jul 13",
+  "jul 14",
+  "jul 15",
+  "jul 16",
+  "jul 17",
+  "jul 18",
+  "jul 19",
+  "jul 20",
+  "jul 21",
+  "jul 22",
+  "jul 23",
+  "jul 24",
+  "jul 25",
+  "jul 26",
+  "jul 27",
+  "jul 28",
+  "jul 29",
+  "jul 30",
+  "jul 31",
+
+  // aug
+  "aug 01",
+  "aug 02",
+  "aug 03",
+  "aug 04",
+  "aug 05",
+  "aug 06",
+  "aug 07",
+  "aug 08",
+  "aug 09",
+  "aug 10",
+  "aug 11",
+  "aug 12",
+  "aug 13",
+  "aug 14",
+  "aug 15",
+  "aug 16",
+  "aug 17",
+  "aug 18",
+  "aug 19",
+  "aug 20",
+  "aug 21",
+  "aug 22",
+  "aug 23",
+  "aug 24",
+  "aug 25",
+  "aug 26",
+  "aug 27",
+  "aug 28",
+  "aug 29",
+  "aug 30",
+  "aug 31",
+
+  // sep
+  "sep 01",
+  "sep 02",
+  "sep 03",
+  "sep 04",
+  "sep 05",
+  "sep 06",
+  "sep 07",
+  "sep 08",
+  "sep 09",
+  "sep 10",
+  "sep 11",
+  "sep 12",
+  "sep 13",
+  "sep 14",
+  "sep 15",
+  "sep 16",
+  "sep 17",
+  "sep 18",
+  "sep 19",
+  "sep 20",
+  "sep 21",
+  "sep 22",
+  "sep 23",
+  "sep 24",
+  "sep 25",
+  "sep 26",
+  "sep 27",
+  "sep 28",
+  "sep 29",
+  "sep 30",
+
+  // Oct
+  "oct 01",
+  "oct 02",
+  "oct 03",
+  "oct 04",
+  "oct 05",
+  "oct 06",
+  "oct 07",
+  "oct 08",
+  "oct 09",
+  "oct 10",
+  "oct 11",
+  "oct 12",
+  "oct 13",
+  "oct 14",
+  "oct 15",
+  "oct 16",
+  "oct 17",
+  "oct 18",
+  "oct 19",
+  "oct 20",
+  "oct 21",
+  "oct 22",
+  "oct 23",
+  "oct 24",
+  "oct 25",
+  "oct 26",
+  "oct 27",
+  "oct 28",
+  "oct 29",
+  "oct 30",
+  "oct 31",
+
+  // nov
+  "nov 01",
+  "nov 02",
+  "nov 03",
+  "nov 04",
+  "nov 05",
+  "nov 06",
+  "nov 07",
+  "nov 08",
+  "nov 09",
+  "nov 10",
+  "nov 11",
+  "nov 12",
+  "nov 13",
+  "nov 14",
+  "nov 15",
+  "nov 16",
+  "nov 17",
+  "nov 18",
+  "nov 19",
+  "nov 20",
+  "nov 21",
+  "nov 22",
+  "nov 23",
+  "nov 24",
+  "nov 25",
+  "nov 26",
+  "nov 27",
+  "nov 28",
+  "nov 29",
+  "nov 30",
+
+  // dec
+  "dec 01",
+  "dec 02",
+  "dec 03",
+  "dec 04",
+  "dec 05",
+  "dec 06",
+  "dec 07",
+  "dec 08",
+  "dec 09",
+  "dec 10",
+  "dec 11",
+  "dec 12",
+  "dec 13",
+  "dec 14",
+  "dec 15",
+  "dec 16",
+  "dec 17",
+  "dec 18",
+  "dec 19",
+  "dec 20",
+  "dec 21",
+  "dec 22",
+  "dec 23",
+  "dec 24",
+  "dec 25",
+  "dec 26",
+  "dec 27",
+  "dec 28",
+  "dec 29",
+  "dec 30",
+];
+
+function parseTodaysDate() {
+  return (today = today.substring(4, 10));
+}
+parseTodaysDate();
+
+days.forEach((day) => {
+  switch (today) {
+    case "jan 01":
+    case "jan 02":
+    case "jan 03":
+    case "jan 04":
+    case "jan 05":
+    case "jan 06":
+    case "jan 07":
+    case "jan 08":
+    case "jan 09":
+    case "jan 10":
+    case "jan 11":
+    case "jan 12":
+    case "jan 13":
+    case "jan 14":
+    case "jan 15":
+    case "jan 16":
+    case "jan 17":
+    case "jan 18":
+    case "jan 19":
+    case "jan 20":
+    case "jan 21":
+    case "jan 22":
+    case "jan 23":
+    case "jan 24":
+    case "jan 25":
+    case "jan 26":
+    case "jan 27":
+    case "jan 28":
+    case "jan 29":
+    case "jan 30":
+    case "jan 31":
+
+    case "feb 01":
+    case "feb 02":
+    case "feb 03":
+    case "feb 04":
+    case "feb 05":
+    case "feb 06":
+    case "feb 07":
+    case "feb 08":
+    case "feb 09":
+    case "feb 10":
+    case "feb 11":
+    case "feb 12":
+    case "feb 13":
+    case "feb 14":
+    case "feb 15":
+    case "feb 16":
+    case "feb 17":
+    case "feb 18":
+    case "feb 19":
+    case "feb 20":
+    case "feb 21":
+    case "feb 22":
+    case "feb 23":
+    case "feb 24":
+    case "feb 25":
+    case "feb 26":
+    case "feb 27":
+    case "feb 28":
+    case "feb 29":
+
+    case "mar 01":
+    case "mar 02":
+    case "mar 03":
+    case "mar 04":
+    case "mar 05":
+    case "mar 06":
+    case "mar 07":
+    case "mar 08":
+    case "mar 09":
+    case "mar 10":
+    case "mar 11":
+    case "mar 12":
+    case "mar 13":
+    case "mar 14":
+    case "mar 15":
+    case "mar 16":
+    case "mar 17":
+    case "mar 18":
+    case "mar 19":
+    case "mar 20":
+    case "mar 21":
+    case "mar 22":
+    case "mar 23":
+    case "mar 24":
+    case "mar 25":
+    case "mar 26":
+    case "mar 27":
+    case "mar 28":
+    case "mar 29":
+    case "mar 30":
+    case "mar 31":
+      currentQuarter = quarters[0];
+      break;
+
+    case "apr 01":
+    case "apr 02":
+    case "apr 03":
+    case "apr 04":
+    case "apr 05":
+    case "apr 06":
+    case "apr 07":
+    case "apr 08":
+    case "apr 09":
+    case "apr 10":
+    case "apr 11":
+    case "apr 12":
+    case "apr 13":
+    case "apr 14":
+    case "apr 15":
+    case "apr 16":
+    case "apr 17":
+    case "apr 18":
+    case "apr 19":
+    case "apr 20":
+    case "apr 21":
+    case "apr 22":
+    case "apr 23":
+    case "apr 24":
+    case "apr 25":
+    case "apr 26":
+    case "apr 27":
+    case "apr 28":
+    case "apr 29":
+    case "apr 30":
+
+    case "may 01":
+    case "may 02":
+    case "may 03":
+    case "may 04":
+    case "may 05":
+    case "may 06":
+    case "may 07":
+    case "may 08":
+    case "may 09":
+    case "may 10":
+    case "may 11":
+    case "may 12":
+    case "may 13":
+    case "may 14":
+    case "may 15":
+    case "may 16":
+    case "may 17":
+    case "may 18":
+    case "may 19":
+    case "may 20":
+    case "may 21":
+    case "may 22":
+    case "may 23":
+    case "may 24":
+    case "may 25":
+    case "may 26":
+    case "may 27":
+    case "may 28":
+    case "may 29":
+    case "may 30":
+    case "may 31":
+
+    case "jun 01":
+    case "jun 02":
+    case "jun 03":
+    case "jun 04":
+    case "jun 05":
+    case "jun 06":
+    case "jun 07":
+    case "jun 08":
+    case "jun 09":
+    case "jun 10":
+    case "jun 11":
+    case "jun 12":
+    case "jun 13":
+    case "jun 14":
+    case "jun 15":
+    case "jun 16":
+    case "jun 17":
+    case "jun 18":
+    case "jun 19":
+    case "jun 20":
+    case "jun 21":
+    case "jun 22":
+    case "jun 23":
+    case "jun 24":
+    case "jun 25":
+    case "jun 26":
+    case "jun 27":
+    case "jun 28":
+    case "jun 29":
+    case "jun 30":
+      currentQuarter = quarters[1];
+      break;
+
+    case "jul 01":
+    case "jul 02":
+    case "jul 03":
+    case "jul 04":
+    case "jul 05":
+    case "jul 06":
+    case "jul 07":
+    case "jul 08":
+    case "jul 09":
+    case "jul 10":
+    case "jul 11":
+    case "jul 12":
+    case "jul 13":
+    case "jul 14":
+    case "jul 15":
+    case "jul 16":
+    case "jul 17":
+    case "jul 18":
+    case "jul 19":
+    case "jul 20":
+    case "jul 21":
+    case "jul 22":
+    case "jul 23":
+    case "jul 24":
+    case "jul 25":
+    case "jul 26":
+    case "jul 27":
+    case "jul 28":
+    case "jul 29":
+    case "jul 30":
+    case "jul 31":
+
+    case "aug 01":
+    case "aug 02":
+    case "aug 03":
+    case "aug 04":
+    case "aug 05":
+    case "aug 06":
+    case "aug 07":
+    case "aug 08":
+    case "aug 09":
+    case "aug 10":
+    case "aug 11":
+    case "aug 12":
+    case "aug 13":
+    case "aug 14":
+    case "aug 15":
+    case "aug 16":
+    case "aug 17":
+    case "aug 18":
+    case "aug 19":
+    case "aug 20":
+    case "aug 21":
+    case "aug 22":
+    case "aug 23":
+    case "aug 24":
+    case "aug 25":
+    case "aug 26":
+    case "aug 27":
+    case "aug 28":
+    case "aug 29":
+    case "aug 30":
+    case "aug 31":
+
+    case "sep 01":
+    case "sep 02":
+    case "sep 03":
+    case "sep 04":
+    case "sep 05":
+    case "sep 06":
+    case "sep 07":
+    case "sep 08":
+    case "sep 09":
+    case "sep 10":
+    case "sep 11":
+    case "sep 12":
+    case "sep 13":
+    case "sep 14":
+    case "sep 15":
+    case "sep 16":
+    case "sep 17":
+    case "sep 18":
+    case "sep 19":
+    case "sep 20":
+    case "sep 21":
+    case "sep 22":
+    case "sep 23":
+    case "sep 24":
+    case "sep 25":
+    case "sep 26":
+    case "sep 27":
+    case "sep 28":
+    case "sep 29":
+    case "sep 30":
+      currentQuarter = quarters[2];
+      break;
+
+    case "oct 01":
+    case "oct 02":
+    case "oct 03":
+    case "oct 04":
+    case "oct 05":
+    case "oct 06":
+    case "oct 07":
+    case "oct 08":
+    case "oct 09":
+    case "oct 10":
+    case "oct 11":
+    case "oct 12":
+    case "oct 13":
+    case "oct 14":
+    case "oct 15":
+    case "oct 16":
+    case "oct 17":
+    case "oct 18":
+    case "oct 19":
+    case "oct 20":
+    case "oct 21":
+    case "oct 22":
+    case "oct 23":
+    case "oct 24":
+    case "oct 25":
+    case "oct 26":
+    case "oct 27":
+    case "oct 28":
+    case "oct 29":
+    case "oct 30":
+    case "oct 31":
+
+    case "nov 01":
+    case "nov 02":
+    case "nov 03":
+    case "nov 04":
+    case "nov 05":
+    case "nov 06":
+    case "nov 07":
+    case "nov 08":
+    case "nov 09":
+    case "nov 10":
+    case "nov 11":
+    case "nov 12":
+    case "nov 13":
+    case "nov 14":
+    case "nov 15":
+    case "nov 16":
+    case "nov 17":
+    case "nov 18":
+    case "nov 19":
+    case "nov 20":
+    case "nov 21":
+    case "nov 22":
+    case "nov 23":
+    case "nov 24":
+    case "nov 25":
+    case "nov 26":
+    case "nov 27":
+    case "nov 28":
+    case "nov 29":
+    case "nov 30":
+
+    case "dec 01":
+    case "dec 02":
+    case "dec 03":
+    case "dec 04":
+    case "dec 05":
+    case "dec 06":
+    case "dec 07":
+    case "dec 08":
+    case "dec 09":
+    case "dec 10":
+    case "dec 11":
+    case "dec 12":
+    case "dec 13":
+    case "dec 14":
+    case "dec 15":
+    case "dec 16":
+    case "dec 17":
+    case "dec 18":
+    case "dec 19":
+    case "dec 20":
+    case "dec 21":
+    case "dec 22":
+    case "dec 23":
+    case "dec 24":
+    case "dec 25":
+    case "dec 26":
+    case "dec 27":
+    case "dec 28":
+    case "dec 29":
+    case "dec 30":
+    case "dec 31":
+      currentQuarter = quarters[3];
+      break;
+
+    default:
+      break;
+  }
+});
+---
+
+<style>
+  h1 {
+    font-family: "Bricolage Grotesque Variable", sans-serif;
+    font-size: 45vw;
+  }
+
+  :root {
+    --crayola: #3772ff;
+    --primary-black: #080708;
+    --poppy: #df2935;
+    --sunglow: #fdca40;
+    --jade: #0ead69;
+    --platinum: #e6e8e6;
+  }
+
+  .bg-crayola {
+    background-color: var(--crayola);
+  }
+
+  .bg-jade {
+    background-color: var(--jade);
+  }
+</style>
+
+<Layout
+  title="🗓️ What Quarter Are We In Right Now? - The Fiscal Quarter Keeper"
+>
+  <main>
+    <section
+      id="hero"
+      class="near-black flex justify-center items-center vh-100 bg-crayola"
+    >
+      <div>
+        <h1 class="ttu mv0 tracked-tight">{currentQuarter}</h1>
+      </div>
+    </section>
+  </main>
+</Layout>
