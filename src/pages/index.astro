@@ -955,7 +955,7 @@ console.log(importantDates[0]);
 
 <Layout title="🤔 What Quarter Are We In Anyway? • LazyQuarter">
   <header class="ph3 pv3 mw7 center">
-    <p class="cyan-800 fw6 mb1">
+    <p class="cyan-800 fw6 mb1 f4-ns">
       TheLazyQuarter <span class="fw3 i">Lookup</span>
       <span class="wg-600"> &middot; USA 🇺🇸</span>
     </p>
@@ -963,16 +963,53 @@ console.log(importantDates[0]);
       Come for the quarter, stay for the humor
     </p>
   </header>
-  <main class="mw7 center">
+  <main class="mw7 center pb4">
     <section>
-      <div class="ph3 pv3">
+      <div class="ph3">
         <h1 class="f2 wg-700 normal mt1 mb2 pt4-l">
-          The current quarter is <span class="bricolage ttu fw6 cyan-1000"
+          You are currently in <span class="bricolage ttu fw6 cyan-1000"
             >{currentQuarter}</span
           >
         </h1>
 
         <p class="f6 mt0 wg-600">({dateRange})</p>
+
+        <div class="pt4-l">
+          <h2 class="pt3 wg-700 f4 lh-title mb1 fw6">
+            What is a Quarter Year?
+          </h2>
+
+          <p class="quarter-summary lh-copy wg-700">
+            Alright, listen up, junior! Let me break down this whole "quarter
+            year" thing for you. So, you know how a year has 12 months, right?
+            Well, imagine it's like a box of chocolates, but instead of
+            chocolates, it's time, and you're just munching on it. Now, cut that
+            time-box into four delicious slices, each lasting about three
+            months. Boom, that's a quarter year for you!
+          </p>
+          <p class="quarter-summary lh-copy wg-700">
+            First off, you got January, February, March – that's Q1. It's like
+            the warm-up act for the whole year. People are recovering from New
+            Year's parties, and you're thinking, "This is gonna be my year,
+            man!" Spoiler alert: it usually isn't. Then comes April, May, June –
+            Q2. Spring is in the air, flowers are blooming, and you're getting
+            ready to wrap up school. It's like the main event, where you're
+            dodging final exams and dreaming of summer freedom. July, August,
+            September – Q3 is next.
+          </p>
+          <p class="quarter-summary lh-copy wg-700">
+            Summer break, baby! Time to kick back, maybe get a job, or just
+            perfect the art of doing absolutely nothing. It's the season of
+            sunscreen, pool parties, and regrettable tan lines. And finally,
+            October, November, December – Q4. We're talking fall and winter,
+            holidays stacked on top of each other like a festive sandwich. You
+            got Halloween candy, Thanksgiving feasts, and the grand finale –
+            Christmas presents. So, when someone says, "Oh, that happened in the
+            first quarter of the year," they mean it went down in those initial
+            three months. It's like the chapters of a book, just with more
+            calendar dates and fewer plot twists.
+          </p>
+        </div>
 
         <div class="pv4-l">
           <h2 class="pt3 wg-700 f4 lh-title mb1 fw6">
@@ -1029,8 +1066,8 @@ console.log(importantDates[0]);
               // <li class="pv2">
               //   {importantDate[0][0]} - {importantDate[1][0]}
               // </li>
-              <li class="pv2 di-ns">
-                <p class="lh-copy fw5 dib">
+              <li class="di-ns">
+                <p class="lh-copy fw5 dib mv0 pv2">
                   {" "}
                   {importantDate[1][0]}{" "}
                   <span class="wg-600 normal pr3">
