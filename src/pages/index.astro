@@ -804,11 +804,11 @@ switch (currentQuarter) {
   case "q1":
     dateRange = "January 01 - March 31";
     importantDates.push(
-      [["January 01"], ["New Year's Day"]],
-      [["January 20"], ["Inauguration Day"]],
-      [["February 14"], ["Valentine's Day"]],
-      [["February 21"], ["President's Day"]],
-      [["March 17"], ["St. Patrick's Day"]]
+      [["January 01"], ["🥴 New Year's Day"]],
+      [["January 20"], ["🏛️ Inauguration Day"]],
+      [["February 14"], ["❤️ Valentine's Day"]],
+      [["February 21"], ["🥱 President's Day"]],
+      [["March 17"], ["🍀 St. Patrick's Day"]]
     );
     summary =
       "Well, you know, it's the start of the year, and people are still trying to stick to those New Year's resolutions. Me? I resolved to eat more tacos. Winter's hanging around, but so are folks pretending to enjoy the cold. We're also treated to the rare sight of politicians making promises that they may or may not remember by April.";
@@ -817,12 +817,12 @@ switch (currentQuarter) {
   case "q2":
     dateRange = "April 01 - June 30";
     importantDates.push(
-      [["April 01"], ["April Fool's Day"]],
-      [["April 15"], ["Tax Day"]],
-      [["May 05"], ["Cinco de Mayo"]],
-      [["May 30"], ["Memorial Day"]],
-      [["June 14"], ["Flag Day"]],
-      [["June 19"], ["Juneteenth"]]
+      [["April 01"], ["🃏 April Fool's Day"]],
+      [["April 15"], ["💸 Tax Day"]],
+      [["May 05"], ["🇲🇽 Cinco de Mayo"]],
+      [["May 30"], ["🍗 Memorial Day"]],
+      [["June 14"], ["🇺🇸 Flag Day"]],
+      [["June 19"], ["✊🏾 Juneteenth"]]
     );
     summary =
       "Springtime, my favorite season. Flowers bloom, and so does my optimism... until I see my tax bill. April's got folks sweating over receipts, but hey, at least we've got Easter candy to numb the pain. Then comes May - the month where I pretend I know how to grill for Memorial Day, and we all celebrate Cinco de Mayo, even if we're not exactly sure why.";
@@ -831,11 +831,11 @@ switch (currentQuarter) {
   case "q3":
     dateRange = "July 01 - September 30";
     importantDates.push(
-      [["July 04"], ["Independence Day"]],
-      [["July 14"], ["Bastille Day"]],
-      [["First Monday in September"], ["Labor Day"]],
-      [["September 17"], ["Constitution Day"]],
-      [["September 11"], ["Patriot Day"]]
+      [["July 04"], ["🪖 Independence Day"]],
+      [["July 14"], ["🇫🇷 Bastille Day"]],
+      [["First Monday in September"], ["🍔 Labor Day"]],
+      [["September 17"], ["📜 Constitution Day"]],
+      [["September 11"], ["🗽 Patriot Day"]]
     );
     summary =
       "Summertime! Independence Day is like a fireworks display to distract us from the realization that summer is halfway over. July is all about BBQs and pretending I enjoy fireworks more than my dog does. By September, we're squeezing in one last sunburn before Labor Day hits, and we have to put away our white clothes. But who follows that rule, anyway?";
@@ -844,12 +844,12 @@ switch (currentQuarter) {
   case "q4":
     dateRange = "October 01 - December 31";
     importantDates.push(
-      [["October 14"], ["Columbus Day"]],
-      [["October 31"], ["Halloween"]],
-      [["November 11"], ["Veterans Day"]],
-      [["Fourth Thursday in November"], ["Thanksgiving Day"]],
-      [["December 25"], ["Christmas Day"]],
-      [["December 31"], ["New Year's Eve"]]
+      [["October 14"], ["⚓️ Columbus Day"]],
+      [["October 31"], ["🎃 Halloween"]],
+      [["November 11"], ["💪🏽 Veterans Day"]],
+      [["Fourth Thursday in November"], ["🦃 Thanksgiving Day"]],
+      [["December 25"], ["🎄 Christmas Day"]],
+      [["December 31"], ["🥂 New Year's Eve"]]
     );
     summary =
       "Fall is here, and the trees are shedding leaves like my cat sheds hair on my favorite chair. Halloween brings out all the creativity in costume-making, or as I like to call it, 'Let's see who can wear the least clothing and still get candy.' November is all about turkey and pretending to enjoy cranberry sauce. December? Well, it's a magical month filled with twinkling lights, presents, and the inevitable realization that I forgot to buy gifts. Cheers to another year, folks!";
@@ -930,10 +930,31 @@ console.log(importantDates[0]);
   .b--wg-200 {
     border-color: var(--warm-grey-200);
   }
+
+  .definition-container {
+    content: "";
+    width: 220px;
+    height: 300px;
+    position: absolute;
+    top: 40px;
+    left: -30px;
+    border-radius: 10px;
+    background-color: var(--warm-grey-200);
+  }
+
+  #yank-definition:hover .definition-container,
+  #yank-definition:hover .tooltip-pointer {
+    display: block;
+  }
+
+  .tooltip-pointer,
+  .definition-container {
+    display: none;
+  }
 </style>
 
 <Layout title="🤔 What Quarter Are We In Anyway? • LazyQuarter">
-  <header class="ph3 pv3 mw6 center">
+  <header class="ph3 pv3 mw7 center">
     <p class="cyan-800 fw6 mb1">
       TheLazyQuarter <span class="fw3 i">Lookup</span>
       <span class="wg-600"> &middot; USA 🇺🇸</span>
@@ -942,10 +963,10 @@ console.log(importantDates[0]);
       Come for the quarter, stay for the humor
     </p>
   </header>
-  <main class="mw6 center">
+  <main class="mw7 center">
     <section>
       <div class="ph3 pv3">
-        <h1 class="f2 wg-700 normal mt1 mb2">
+        <h1 class="f2 wg-700 normal mt1 mb2 pt4-l">
           The current quarter is <span class="bricolage ttu fw6 cyan-1000"
             >{currentQuarter}</span
           >
@@ -953,14 +974,16 @@ console.log(importantDates[0]);
 
         <p class="f6 mt0 wg-600">({dateRange})</p>
 
-        <h2 class="pt3 wg-700 f4 lh-title mb1 fw6">
-          Another <span class="ttu">{currentQuarter}</span> in America
-        </h2>
-        <small class="f6 wg-600 i">by Bob The Yank</small>
+        <div class="pv4-l">
+          <h2 class="pt3 wg-700 f4 lh-title mb1 fw6">
+            Another <span class="ttu">{currentQuarter}</span> in America
+          </h2>
+          <small class="f6 wg-600 i">by Bob The Yank</small>
 
-        <p class="quarter-summary lh-copy wg-700 bl bw1 b--wg-200 pl2 i">
-          {summary}
-        </p>
+          <p class="quarter-summary lh-copy wg-700 bl bw1 b--wg-200 pl2 i">
+            {summary}
+          </p>
+        </div>
       </div>
     </section>
 
@@ -970,7 +993,33 @@ console.log(importantDates[0]);
           Important Dates in <span class="ttu">{currentQuarter}</span>
         </h2>
         <p class="mt1 f6 wg-600">
-          (For <span class="underline pointer">Yanks</span> only)
+          (For <span
+            id="yank-definition"
+            class="underline pointer bricolage relative dib"
+            style="text-decoration-style: dotted"
+            >Yanks
+            <span class="definition-container pa3 wg-700">
+              <img
+                src="/tooltip-tab.svg"
+                alt=""
+                width="40"
+                class="absolute tooltip-pointer"
+                style="top: -20px; left: 27px"
+              />
+              <span class="fw5 f3 wg-800">Yank</span>
+              <span class="f4"> (noun)</span>
+              <span class="db pt3 lh-copy"
+                >1. A citizen or permanent resident of the United States.</span
+              >
+              <span class="db pt2 lh-copy"
+                >2. A lazy person from the US who doesn't want to do simple math
+                to figure out which quarter of the year it is.</span
+              >
+              <span class="db pt2 lh-copy"
+                >3. &uparrow; That's you, pal. &hearts;</span
+              >
+            </span>
+          </span> only)
         </p>
 
         <ul class="wg-700 pl0 list">
@@ -980,10 +1029,14 @@ console.log(importantDates[0]);
               // <li class="pv2">
               //   {importantDate[0][0]} - {importantDate[1][0]}
               // </li>
-              <li class="pv2">
-                <p class="mv0 lh-copy fw5">
+              <li class="pv2 di-ns">
+                <p class="lh-copy fw5 dib">
+                  {" "}
                   {importantDate[1][0]}{" "}
-                  <span class="wg-600 normal"> - {importantDate[0][0]}</span>
+                  <span class="wg-600 normal pr3">
+                    {" "}
+                    ({importantDate[0][0]})
+                  </span>
                 </p>
               </li>
             ))
