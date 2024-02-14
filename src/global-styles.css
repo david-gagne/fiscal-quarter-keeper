@@ -1,0 +1,27 @@
+:root {
+  --crayola: #3772ff;
+  --primary-black: #080708;
+  --poppy: #df2935;
+  --sunglow: #fdca40;
+  --jade: #0ead69;
+  --platinum: #e6e8e6;
+
+  /* Palette 7 in Refactoring UI Color Palettes PDF */
+  --warm-grey-100: #faf9f7;
+  --warm-grey-200: #e8e6e1;
+  --warm-grey-300: #d3cec4;
+  --warm-grey-400: #b8b2a7;
+  --warm-grey-500: #a39e93;
+  --warm-grey-600: #a39e93;
+  --warm-grey-700: #625d52;
+  --warm-grey-800: #504a40;
+  --warm-grey-1000: #27241d;
+
+  --cyan-1000: #0a6c74;
+  --cyan-900: #0a6c74;
+  --cyan-800: #0e7c86;
+}
+
+.b--cyan-900 {
+  border-color: var(--cyan-900);
+}

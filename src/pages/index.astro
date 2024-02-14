@@ -2,13 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 
 let now = new Date();
-// Input a date here to test:
-// e.g. April 30, 2023
+// Input a date string here to test:
+// e.g. "April 30, 2023"
 // ⮑ Q2
 
 let today = now.toString().toLowerCase();
 let quarters = ["q1", "q2", "q3", "q4"];
 let currentQuarter;
+let dateRange;
+let importantDates = [];
+let summary;
 let days = [
   "jan 01",
   "jan 02",
@@ -796,21 +799,76 @@ days.forEach((day) => {
       break;
   }
 });
+
+switch (currentQuarter) {
+  case "q1":
+    dateRange = "January 01 - March 31";
+    importantDates.push(
+      [["January 01"], ["New Year's Day"]],
+      [["January 20"], ["Inauguration Day"]],
+      [["February 14"], ["Valentine's Day"]],
+      [["February 21"], ["President's Day"]],
+      [["March 17"], ["St. Patrick's Day"]]
+    );
+    summary =
+      "Well, you know, it's the start of the year, and people are still trying to stick to those New Year's resolutions. Me? I resolved to eat more tacos. Winter's hanging around, but so are folks pretending to enjoy the cold. We're also treated to the rare sight of politicians making promises that they may or may not remember by April.";
+    break;
+
+  case "q2":
+    dateRange = "April 01 - June 30";
+    importantDates.push(
+      [["April 01"], ["April Fool's Day"]],
+      [["April 15"], ["Tax Day"]],
+      [["May 05"], ["Cinco de Mayo"]],
+      [["May 30"], ["Memorial Day"]],
+      [["June 14"], ["Flag Day"]],
+      [["June 19"], ["Juneteenth"]]
+    );
+    summary =
+      "Springtime, my favorite season. Flowers bloom, and so does my optimism... until I see my tax bill. April's got folks sweating over receipts, but hey, at least we've got Easter candy to numb the pain. Then comes May - the month where I pretend I know how to grill for Memorial Day, and we all celebrate Cinco de Mayo, even if we're not exactly sure why.";
+    break;
+
+  case "q3":
+    dateRange = "July 01 - September 30";
+    importantDates.push(
+      [["July 04"], ["Independence Day"]],
+      [["July 14"], ["Bastille Day"]],
+      [["First Monday in September"], ["Labor Day"]],
+      [["September 17"], ["Constitution Day"]],
+      [["September 11"], ["Patriot Day"]]
+    );
+    summary =
+      "Summertime! Independence Day is like a fireworks display to distract us from the realization that summer is halfway over. July is all about BBQs and pretending I enjoy fireworks more than my dog does. By September, we're squeezing in one last sunburn before Labor Day hits, and we have to put away our white clothes. But who follows that rule, anyway?";
+    break;
+
+  case "q4":
+    dateRange = "October 01 - December 31";
+    importantDates.push(
+      [["October 14"], ["Columbus Day"]],
+      [["October 31"], ["Halloween"]],
+      [["November 11"], ["Veterans Day"]],
+      [["Fourth Thursday in November"], ["Thanksgiving Day"]],
+      [["December 25"], ["Christmas Day"]],
+      [["December 31"], ["New Year's Eve"]]
+    );
+    summary =
+      "Fall is here, and the trees are shedding leaves like my cat sheds hair on my favorite chair. Halloween brings out all the creativity in costume-making, or as I like to call it, 'Let's see who can wear the least clothing and still get candy.' November is all about turkey and pretending to enjoy cranberry sauce. December? Well, it's a magical month filled with twinkling lights, presents, and the inevitable realization that I forgot to buy gifts. Cheers to another year, folks!";
+    break;
+
+  default:
+    break;
+}
+
+console.log(importantDates[0]);
 ---
 
 <style>
-  h1 {
-    font-family: "Bricolage Grotesque Variable", sans-serif;
-    font-size: 38vw;
+  body {
+    background-color: var(--warm-grey-100);
   }
 
-  :root {
-    --crayola: #3772ff;
-    --primary-black: #080708;
-    --poppy: #df2935;
-    --sunglow: #fdca40;
-    --jade: #0ead69;
-    --platinum: #e6e8e6;
+  .bricolage {
+    font-family: "Bricolage Grotesque Variable", sans-serif;
   }
 
   .bg-crayola {
@@ -820,18 +878,117 @@ days.forEach((day) => {
   .bg-jade {
     background-color: var(--jade);
   }
+
+  .crayola {
+    color: var(--crayola);
+  }
+
+  .jade {
+    color: var(--jade);
+  }
+
+  .wg-200 {
+    color: var(--warm-grey-200);
+  }
+
+  .wg-400 {
+    color: var(--warm-grey-400);
+  }
+
+  .wg-500 {
+    color: var(--warm-grey-500);
+  }
+
+  .wg-600 {
+    color: var(--warm-grey-600);
+  }
+
+  .wg-700 {
+    color: var(--warm-grey-700);
+  }
+
+  .wg-800 {
+    color: var(--warm-grey-800);
+  }
+
+  .wg-1000 {
+    color: var(--warm-grey-1000);
+  }
+
+  .cyan-1000 {
+    color: var(--cyan-1000);
+  }
+
+  .cyan-800 {
+    color: var(--cyan-800);
+  }
+
+  .b--cyan-800 {
+    border-color: var(--cyan-800);
+  }
+
+  .b--wg-200 {
+    border-color: var(--warm-grey-200);
+  }
 </style>
 
-<Layout
-  title="🗓️ What Quarter Are We In Right Now? - The Fiscal Quarter Keeper"
->
-  <main>
-    <section
-      id="hero"
-      class="near-black flex justify-center items-center vh-100 bg-crayola"
-    >
-      <div>
-        <h1 class="ttu mv0 tracked-tight">{currentQuarter}</h1>
+<Layout title="🤔 What Quarter Are We In Anyway? • LazyQuarter">
+  <header class="ph3 pv3 mw6 center">
+    <p class="cyan-800 fw6 mb1">
+      TheLazyQuarter <span class="fw3 i">Lookup</span>
+      <span class="wg-600"> &middot; USA 🇺🇸</span>
+    </p>
+    <p class="mid-gray mt0 f7 wg-600">
+      Come for the quarter, stay for the humor
+    </p>
+  </header>
+  <main class="mw6 center">
+    <section>
+      <div class="ph3 pv3">
+        <h1 class="f2 wg-700 normal mt1 mb2">
+          The current quarter is <span class="bricolage ttu fw6 cyan-1000"
+            >{currentQuarter}</span
+          >
+        </h1>
+
+        <p class="f6 mt0 wg-600">({dateRange})</p>
+
+        <h2 class="pt3 wg-700 f4 lh-title mb1 fw6">
+          Another <span class="ttu">{currentQuarter}</span> in America
+        </h2>
+        <small class="f6 wg-600 i">by Bob The Yank</small>
+
+        <p class="quarter-summary lh-copy wg-700 bl bw1 b--wg-200 pl2 i">
+          {summary}
+        </p>
+      </div>
+    </section>
+
+    <section id="important-dates">
+      <div class="ph3">
+        <h2 class="f4 fw6 wg-700 mb1">
+          Important Dates in <span class="ttu">{currentQuarter}</span>
+        </h2>
+        <p class="mt1 f6 wg-600">
+          (For <span class="underline pointer">Yanks</span> only)
+        </p>
+
+        <ul class="wg-700 pl0 list">
+          <!-- e.g. April 01 - April Fool's Day -->
+          {
+            importantDates.map((importantDate) => (
+              // <li class="pv2">
+              //   {importantDate[0][0]} - {importantDate[1][0]}
+              // </li>
+              <li class="pv2">
+                <p class="mv0 lh-copy fw5">
+                  {importantDate[1][0]}{" "}
+                  <span class="wg-600 normal"> - {importantDate[0][0]}</span>
+                </p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
   </main>
