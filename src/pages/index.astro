@@ -934,27 +934,37 @@ console.log(importantDates[0]);
   .definition-container {
     content: "";
     width: 220px;
-    height: 300px;
+    height: 220px;
     position: absolute;
-    top: 40px;
+    top: 10px;
     left: -30px;
     border-radius: 10px;
     background-color: var(--warm-grey-200);
   }
 
-  #yank-definition:hover .definition-container,
-  #yank-definition:hover .tooltip-pointer {
+  #yank-definition:hover .definition-container {
     display: block;
   }
-
-  .tooltip-pointer,
   .definition-container {
     display: none;
+  }
+
+  .fadeOutInitial {
+    transition: opacity 250ms;
+  }
+
+  .fadeOutInitial:hover {
+    opacity: 0;
+  }
+
+  .fadeOutCredits {
+    transition: opacity 250ms;
   }
 </style>
 
 <Layout title="🤔 What Quarter Are We In Anyway? • LazyQuarter">
-  <header class="ph3 pv3 mw7 center">
+  <header class="ph3 pt4 pb3 mw7 center">
+    <img src="/logo-cyan-bg.svg" alt="TheLazyQuarter Lookup" width="50" />
     <p class="cyan-800 fw6 mb1 f4-ns">
       TheLazyQuarter <span class="fw3 i">Lookup</span>
       <span class="wg-600"> &middot; USA 🇺🇸</span>
@@ -963,11 +973,11 @@ console.log(importantDates[0]);
       Come for the quarter, stay for the humor
     </p>
   </header>
-  <main class="mw7 center pb4">
+  <main class="mw7 center pb6">
     <section>
       <div class="ph3">
         <h1 class="f2 wg-700 normal mt1 mb2 pt4-l">
-          You are currently in <span class="bricolage ttu fw6 cyan-1000"
+          Howdy! You are currently in <span class="bricolage ttu fw6 cyan-1000"
             >{currentQuarter}</span
           >
         </h1>
@@ -1036,13 +1046,6 @@ console.log(importantDates[0]);
             style="text-decoration-style: dotted"
             >Yanks
             <span class="definition-container pa3 wg-700">
-              <img
-                src="/tooltip-tab.svg"
-                alt=""
-                width="40"
-                class="absolute tooltip-pointer"
-                style="top: -20px; left: 27px"
-              />
               <span class="fw5 f3 wg-800">Yank</span>
               <span class="f4"> (noun)</span>
               <span class="db pt3 lh-copy"
@@ -1082,4 +1085,50 @@ console.log(importantDates[0]);
       </div>
     </section>
   </main>
+  <footer class="ph3 mw7 center">
+    <div class="h3 w-100 flex justify-center items-center">
+      <p
+        id="reveal-credits-trigger"
+        class="wg-600 f7 ttu tracked pointer fadeOutInitial mv0"
+      >
+        Site Credits
+      </p>
+      <p class="credits dn wg-600 f7 ttu tracked mv0">
+        <!-- TODO: Add Lis's website URL to href below -->
+        Logo and artwork by <a class="link wg-600" href="">Lis G</a>. &middot;
+        Designed and Developed by <a
+          class="link wg-600"
+          href=" https: buildpax.com">Buildpax</a
+        >.
+      </p>
+    </div>
+  </footer>
 </Layout>
+
+<script>
+  let revealCreditsTrigger = document.getElementById("reveal-credits-trigger");
+  let credits = document.querySelector(".credits");
+
+  revealCreditsTrigger.addEventListener("mouseenter", (event) => {
+    // fade out then...
+    setTimeout(() => {
+      revealCreditsTrigger.classList.add("dn");
+      revealCreditsTrigger.classList.remove("fadeOutInitial");
+      credits.classList.replace("dn", "db");
+    }, 250);
+  });
+
+  credits.addEventListener("mouseleave", (event) => {
+    credits.classList.add("fadeOutCredits");
+
+    setTimeout(() => {
+      credits.classList.add("o-0");
+      credits.classList.replace("db", "dn");
+
+      credits.classList.remove("o-0");
+
+      revealCreditsTrigger.classList.remove("dn");
+      revealCreditsTrigger.classList.add("fadeOutInitial");
+    }, 250);
+  });
+</script>
