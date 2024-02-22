@@ -1131,4 +1131,29 @@ console.log(importantDates[0]);
       revealCreditsTrigger.classList.add("fadeOutInitial");
     }, 250);
   });
+
+  // Start: click events for mobile/touchscreen users
+  revealCreditsTrigger.addEventListener("click", (event) => {
+    // fade out then...
+    setTimeout(() => {
+      revealCreditsTrigger.classList.add("dn");
+      revealCreditsTrigger.classList.remove("fadeOutInitial");
+      credits.classList.replace("dn", "db");
+    }, 250);
+  });
+
+  credits.addEventListener("click", (event) => {
+    credits.classList.add("fadeOutCredits");
+
+    setTimeout(() => {
+      credits.classList.add("o-0");
+      credits.classList.replace("db", "dn");
+
+      credits.classList.remove("o-0");
+
+      revealCreditsTrigger.classList.remove("dn");
+      revealCreditsTrigger.classList.add("fadeOutInitial");
+    }, 250);
+  });
+  // End: click events for mobile/touchscreen users
 </script>
